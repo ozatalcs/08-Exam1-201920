@@ -101,15 +101,19 @@ def problem1(square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # Done: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     square.attach_to(window)
     center = rg.Point(square.center.x, square.center.y + square.length_of_each_side)
     circle = rg.Circle(center, square.length_of_each_side/2)
     circle.fill_color = square.fill_color
-    line = rg.Line()
+    circle.outline_thickness = thickness
     circle.attach_to(window)
+    line = rg.Line(center, rg.Point(square.center.x - circle.radius, square.center.y))
+    line.thickness = thickness
+    line.color = square.outline_color
+    line.attach_to(window)
     window.render()
 
 
