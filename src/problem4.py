@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Conner Ozatalar.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -68,13 +68,23 @@ def problem4(number_of_stairs, step_size, starting_point, window):
       :type window:            rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
-
-
+    for k in range(number_of_stairs):
+        lineh = rg.Line(rg.Point(starting_point.x + step_size * k, starting_point.y - step_size * k), rg.Point(starting_point.x + step_size * k, starting_point.y - step_size * (k + 1)))
+        lineh.color = 'magenta'
+        lineh.thickness = 3
+        linev = rg.Line(rg.Point(starting_point.x + step_size * k, starting_point.y - step_size * (k + 1)), rg.Point(starting_point.x + step_size * (1 + k), starting_point.y - step_size * (k + 1)))
+        linev.thickness = 3
+        lineh.attach_to(window)
+        linev.attach_to(window)
+    point = rg.Point(starting_point.x + step_size * number_of_stairs, starting_point.y - step_size * number_of_stairs)
+    starting_point.attach_to(window)
+    point.attach_to(window)
+    window.render()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
